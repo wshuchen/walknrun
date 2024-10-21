@@ -26,9 +26,9 @@ walk_dir=Walks                           # Directory for walks
 ## Make path to scripts available.
 bin_path=$(echo ${PWD} | sed 's/\/test//')/bin
 export PATH=${bin_path}:$PATH
-# if [[ -d ${bin_path}/pangene ]]; then
-#     export PATH=${bin_path}/pangene:$PATH
-# fi
+if [[ -d ${bin_path}/pangene ]]; then
+    export PATH=${bin_path}/pangene:$PATH
+fi
 
 ## Align protein sequences to genomes
 alignProt.sh ${genome_dir} ${protein_seq} ${chrom_num} ${threads}

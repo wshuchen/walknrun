@@ -8,24 +8,23 @@ Using letters to represent presence-absence variation provides a simple and clea
 
 ### Dependencies  
 
-The program use [_miniprot_](https://github.com/lh3/miniprot), [_pangene_](https://github.com/lh3/pangene), and [_seqkit_](https://bioinf.shenwei.me/seqkit/). Precompiled binaries can be download from the authors' sites. 
+The program uses [_miniprot_](https://github.com/lh3/miniprot), [_pangene_](https://github.com/lh3/pangene), and [_seqkit_](https://bioinf.shenwei.me/seqkit/). Precompiled binaries can be download from the authors' sites. 
 
 ### Usage  
 
-Download the package and then export the path.
+Clone the repository and then export the path to bin.
 
 Users should carefully read the scripts and modify them accordingly to serve their needs. Note that scripts to generate and process files after alignments are written specifically for three genomes as a group and the first genome as query genome. Also note that some scripts set default values for options in alignment, graph construction, and run processing.   
 
 ### Files  
 bin - This directory contains all the scripts. If a user is to run the getPangene.sh in the test directory, the bin will also contain pangene.  
 
-test - This directory contain data (genomes, protein sequences) to run the scripts
-from alignment to walk extraction. 
+test - This directory contains genome sequences (partial chromosomes of three rice cultivars), protein sequences, and scripts to run the program from alignment to walk extraction. 
 
 ### Functionality of the scripts  
 
 _getAssemblySeq.sh_ - extract chromosome sequences and insert "genome_chrN" before ">"  
-_list3Genome.sg_ - make a list of combined names of three genomes 
+_list3Genome.sh_ - make a list of combined names of three genomes 
 _alignProt.sh_ - run miniprot to align proteins to genomes  
 _makeGraphPav.sh_ - run pangene to construct gene graph and generate PAV table  
 _symbolizeWalk.sh_ - extract gene walk, <u>rearrange</u>, symbolize, and summarize PAV table  
@@ -37,7 +36,7 @@ _checkRunLength.sh_ - call locateRun.sh to process a list of genomes
 _checkRunChrom.sh_ - summarize the result of locateRun.sh for run chromosome info  
 _getUniqRun.R_ - summarize the run chromosome info for uniq run of a genome in multiple genome comparison 
 _checkGeneWalk.sh_ - check the presence of a gene in alignment, graph and PAV table  
-_tableRunLength.sh_ - simple summary of run lenth from run coordinate file
+_tableRunLength.sh_ - simple summary of run length from run coordinate file
 
 ### Test  
 The test will run the scripts from alignment to walk extraction.

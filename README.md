@@ -49,7 +49,9 @@ cd test
 ./getPangene.sh
 ./testWalknRun.sh
 ```
-The test script would take less then two minutes to finish the job.
+The test script would take less then two minutes to finish the job.  
+
+The directory alos includes a script to look at the difference of walks extracted from graphs contructed with different order of the same alignment files. See the README for detail.
 
 ### Acknowledgments
 

@@ -42,7 +42,7 @@ _tableRunLength.sh_ - simple summary of run length from run coordinate file
 The test will run the scripts from alignment to walk extraction.
 See other scripts for further processing.
 
-Usrs can either download pangene binariies and make the path available, or run getPangene.sh.
+Users can either download pangene binaries and make the path available, or run getPangene.sh.
 
 ```{bash}
 cd test

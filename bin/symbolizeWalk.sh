@@ -18,8 +18,7 @@ chrom=$4          # Chromosome name, e.g., chr1
 symbols=${5:-"- A B C d e f"}  # Default: -(all)=A,B,C, d=A,B, e=A,C, f=B,C
 
 ## Get the genome names from gfa file.
-genome_names=$(grep -Po "^W\t.*" ${gfa_file} |\
-             sed "s/^W\t//g; s/_.*//g" | awk '!a[$0]++')
+genome_names=$(grep -P "^W\t" ${gfa_file} | cut -f2 | cut -d"_" -f1 | awk '!a[$0]++')             
 genomes=($genome_names)    # (A B C)
 symbols=($symbols)         # (- A B C d e f)
 graph_prefix=$(echo ${genomes[@]} | sed "s/ /_/g")  # A_B_C
@@ -29,9 +28,8 @@ graph_prefix=$(echo ${genomes[@]} | sed "s/ /_/g")  # A_B_C
 # Walk of a genome/chromosome in *.gfa from miniprot (aligned to Azucena.fasta):
 # W	Azucena_chr10	0	Azucena_chr10	*	*	<XP_015612840.1>...
 # There may have duplicate gene names in the walk. Keep the duplicates.
-grep -P "^W\t${query_genome}.*\t" ${gfa_file} | grep "${chrom}" |\
-    sed "s/\(^W.*	\)\(.*\)\(	.*$\)/\2/g" |\
-    tr "[><]" "\n" | sed '1d' \
+grep -P "^W\t" ${gfa_file} | grep "${query_genome}" | grep "${chrom}" |\
+    cut -f7 | tr "[><]" "\n" | sed '1d' \
     > tmp_${graph_prefix}_${chrom}_walk
 
 ## Use the walk to rearrange the rows of pav table. 
